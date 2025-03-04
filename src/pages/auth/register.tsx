@@ -17,23 +17,27 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-const registerSchema = z.object({
-  username: z
-    .string()
-    .min(3, { message: "Nome de usuário deve ter pelo menos 3 caracteres" }),
-  email: z.string().email({ message: "Email inválido" }),
-  password: z
-    .string()
-    .min(6, { message: "Senha deve ter pelo menos 6 caracteres" }),
-  confirm_password: z.string().min(6, { message: "Confirmação de senha obrigatória" }),
-}).refine((data) => data.password === data.confirm_password, {
-  message: "As senhas não coincidem",
-  path: ["confirm_password"],
-});
+const registerSchema = z
+  .object({
+    username: z
+      .string()
+      .min(3, { message: "Nome de usuário deve ter pelo menos 3 caracteres" }),
+    email: z.string().email({ message: "Email inválido" }),
+    password: z
+      .string()
+      .min(6, { message: "Senha deve ter pelo menos 6 caracteres" }),
+    confirm_password: z
+      .string()
+      .min(6, { message: "Confirmação de senha obrigatória" }),
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    message: "As senhas não coincidem",
+    path: ["confirm_password"],
+  });
 
 type RegisterForm = z.infer<typeof registerSchema>;
 
-function Register() {
+function Register({ onRegisterSuccess }: { onRegisterSuccess: () => void }) {
   const [errorMessage, setErrorMessage] = useState("");
 
   const form = useForm<RegisterForm>({
@@ -49,7 +53,8 @@ function Register() {
   const onSubmit = async (data: RegisterForm) => {
     setErrorMessage("");
     try {
-      await api.post("/auth/register", data);  // Rota alterada para register
+      await api.post("/auth/register", data);
+      onRegisterSuccess();
     } catch (err) {
       if (err instanceof AxiosError) {
         setErrorMessage(

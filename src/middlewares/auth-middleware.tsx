@@ -15,12 +15,18 @@ const AuthMiddleware: React.FC<AuthMiddlewareProps> = ({ children }) => {
   useEffect(() => {
     const token = Cookies.get('token');
 
-    if (!token) {
-      navigate('/');
-    } else {
-      setIsAuthorized(true);
-    }
-    setLoading(false);
+    // Adicionando o atraso de 700ms
+    const timer = setTimeout(() => {
+      if (!token) {
+        navigate('/');
+      } else {
+        setIsAuthorized(true);
+      }
+      setLoading(false);
+    }, 1400); // 700ms de atraso
+
+    return () => clearTimeout(timer); // Limpar o timer caso o componente seja desmontado
+
   }, [navigate]);
 
   if (loading) {

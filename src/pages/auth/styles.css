@@ -1,0 +1,22 @@
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.typing-animation {
+  overflow: hidden;
+  border-right: 10px solid;
+  white-space: nowrap;
+  animation: typing 2s steps(50) 1s forwards, blink 0.90s step-end infinite;
+  line-height: 1.5;
+}
