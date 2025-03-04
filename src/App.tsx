@@ -14,7 +14,9 @@ const App = () => {
             path="/*"
             element={
               <AuthMiddleware>
-                <Dashboard />
+                <Dashboard>
+                  <div>A</div>
+                </Dashboard>
               </AuthMiddleware>
             }
           />

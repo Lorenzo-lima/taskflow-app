@@ -6,15 +6,17 @@ import { useState } from "react";
 import { TypographyH4 } from "@/components/typography/typography-h4";
 import { TypographyH1 } from "@/components/typography/typography-h1";
 import "./styles.css";
+import SpiralBackground from "@/components/spiral-background";
 
 function TabsForm() {
   const [tabValue, setTabValue] = useState("login");
 
   return (
-    <div className="flex flex-col w-full h-screen relative mx-auto">
+    <div className="flex flex-col w-full h-screen relative mx-auto overflow-hidden">
       <span className="absolute left-6 top-6">
         <ModeToggle />
       </span>
+      <SpiralBackground />
       <div className="flex flex-col justify-between items-center mt-10">
         <div>
           <TypographyH1 animationClass="typing-animation text-center lg:text-7xl my-22">
@@ -29,11 +31,11 @@ function TabsForm() {
         >
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="login">Login</TabsTrigger>
-            <TabsTrigger value="register">Register</TabsTrigger>
+            <TabsTrigger value="register">Registrar</TabsTrigger>
           </TabsList>
           <TabsContent
             value="login"
-            className="flex flex-col border rounded-lg p-6"
+            className="flex flex-col border rounded-lg backdrop-blur-md p-6"
           >
             <TypographyH4>Bem-vindo de volta!</TypographyH4>
             <h2 className="text-muted-foreground text-sm pb-6">
@@ -43,7 +45,7 @@ function TabsForm() {
           </TabsContent>
           <TabsContent
             value="register"
-            className="flex flex-col border rounded-lg p-6"
+            className="flex flex-col border rounded-lg backdrop-blur-md p-6"
           >
             <TypographyH4>Primeira vez? Registre-se!</TypographyH4>
             <h2 className="text-muted-foreground text-sm pb-6">
