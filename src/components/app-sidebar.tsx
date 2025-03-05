@@ -3,11 +3,14 @@ import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarRail
 } from "@/components/ui/sidebar";
 
 // Menu items.
@@ -42,6 +45,7 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
+        <SidebarHeader>Header</SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
@@ -60,6 +64,8 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>Dados do usuario ao fazer login</SidebarFooter>
+      <SidebarRail />
     </Sidebar>
   );
 }

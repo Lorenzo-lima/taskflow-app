@@ -32,7 +32,7 @@ const loginSchema = z.object({
 
 type LoginForm = z.infer<typeof loginSchema>;
 
-function Login() {
+export function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -118,5 +118,3 @@ function Login() {
     </Form>
   );
 }
-
-export default Login;

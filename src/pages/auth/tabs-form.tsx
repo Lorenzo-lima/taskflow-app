@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ModeToggle } from "@/components/mode-toggle";
-import Login from "./login";
+import { Login } from "./login";
 import Register from "./register";
 import { useState } from "react";
 import { TypographyH4 } from "@/components/typography/typography-h4";
